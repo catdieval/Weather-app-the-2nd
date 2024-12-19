@@ -1,16 +1,17 @@
-export function List({ activities, isGoodWeather, onDeleteActivity }) {
+export default function List({ activities, onDeleteActivity }) {
+
   return (
     <>
-      <h1>
-        {isGoodWeather
-          ? "The weather is awesome! Go outside and:"
-          : "Bad weather outside! Here´s what you can do now:"}
-      </h1>
-      <ul>
+      <ul className="list-container">
         {activities.map((activity) => (
-          <li className="listItem" key={activity.id}>
+          <li key={activity.id}>
             {activity.name}{" "}
-            <button onClick={() => onDeleteActivity(activity.id)} type="delete">
+            <button 
+              className="delete-button" 
+              aria-label="Delete activity"
+              title="Delete activity"
+              onClick={() => onDeleteActivity(activity.id)}
+            >
               ❌
             </button>
           </li>
